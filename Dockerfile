@@ -16,8 +16,7 @@ COPY ./src /app/src
 WORKDIR /app
 RUN make setup \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* \
-    && make setup-lb
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
  # REPL listen port
 EXPOSE 1689
