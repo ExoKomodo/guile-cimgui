@@ -153,11 +153,10 @@ container-push-all: ## Pushes all container tags
 
 .PHONY: cimgui-generate
 cimgui-generate:
-	cd ./src/external/cimgui/generator; \
-	./generator.sh; \
-	mv -v ./output/cimgui_impl.h ../../../libs/cimgui.h; \
-	cd ..; \
-	mv -v ./cimgui.cpp ../../libs/cimgui.cpp;
+	cd ./src/cimgui; \
+	guile \
+		-L $(SOURCE_DIR) \
+		-s generate.scm;
 
 ##@ Help
 
