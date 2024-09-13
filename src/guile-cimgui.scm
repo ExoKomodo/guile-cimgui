@@ -16,11 +16,11 @@
   (assert cimgui)
   (format #t "[guile-cimgui] Tests finished successfully~%"))
 
-(define ImVec2 2)
-(define ImVec4 4)
-(define ImRect 4)
-(define bool 7)
-(define char 3)
+(define ImVec2 (list float float))
+(define ImVec4 (list float float float float))
+(define ImRect (list ImVec2 ImVec2))
+(define bool unsigned-int)
+(define char uint8)
 
 (define igWindowRectRelToAbs
   (foreign-library-function
@@ -1289,7 +1289,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 32 int int '* int)))
+   (list '* "4" int int '* int)))
 
 (define igSliderInt3
   (foreign-library-function
@@ -1298,7 +1298,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 24 int int '* int)))
+   (list '* "3" int int '* int)))
 
 (define igSliderInt2
   (foreign-library-function
@@ -1307,7 +1307,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 16 int int '* int)))
+   (list '* "2" int int '* int)))
 
 (define igSliderInt
   (foreign-library-function
@@ -1325,7 +1325,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 4 float float '* int)))
+   (list '* "4" float float '* int)))
 
 (define igSliderFloat3
   (foreign-library-function
@@ -1334,7 +1334,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 3 float float '* int)))
+   (list '* "3" float float '* int)))
 
 (define igSliderFloat2
   (foreign-library-function
@@ -1343,7 +1343,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 2 float float '* int)))
+   (list '* "2" float float '* int)))
 
 (define igSliderFloat
   (foreign-library-function
@@ -3791,7 +3791,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 32 int)))
+   (list '* "4" int)))
 
 (define igInputInt3
   (foreign-library-function
@@ -3800,7 +3800,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 24 int)))
+   (list '* "3" int)))
 
 (define igInputInt2
   (foreign-library-function
@@ -3809,7 +3809,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 16 int)))
+   (list '* "2" int)))
 
 (define igInputInt
   (foreign-library-function
@@ -3827,7 +3827,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 4 '* int)))
+   (list '* "4" '* int)))
 
 (define igInputFloat3
   (foreign-library-function
@@ -3836,7 +3836,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 3 '* int)))
+   (list '* "3" '* int)))
 
 (define igInputFloat2
   (foreign-library-function
@@ -3845,7 +3845,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 2 '* int)))
+   (list '* "2" '* int)))
 
 (define igInputFloat
   (foreign-library-function
@@ -6140,7 +6140,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 32 float int int '* int)))
+   (list '* "4" float int int '* int)))
 
 (define igDragInt3
   (foreign-library-function
@@ -6149,7 +6149,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 24 float int int '* int)))
+   (list '* "3" float int int '* int)))
 
 (define igDragInt2
   (foreign-library-function
@@ -6158,7 +6158,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 16 float int int '* int)))
+   (list '* "2" float int int '* int)))
 
 (define igDragInt
   (foreign-library-function
@@ -6185,7 +6185,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 4 float float float '* int)))
+   (list '* "4" float float float '* int)))
 
 (define igDragFloat3
   (foreign-library-function
@@ -6194,7 +6194,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 3 float float float '* int)))
+   (list '* "3" float float float '* int)))
 
 (define igDragFloat2
   (foreign-library-function
@@ -6203,7 +6203,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 2 float float float '* int)))
+   (list '* "2" float float float '* int)))
 
 (define igDragFloat
   (foreign-library-function
@@ -7067,7 +7067,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 4 int '*)))
+   (list '* "4" int '*)))
 
 (define igColorPicker3
   (foreign-library-function
@@ -7076,7 +7076,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 3 int)))
+   (list '* "3" int)))
 
 (define igColorEditOptionsPopup
   (foreign-library-function
@@ -7094,7 +7094,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 4 int)))
+   (list '* "4" int)))
 
 (define igColorEdit3
   (foreign-library-function
@@ -7103,7 +7103,7 @@
    #:return-type
    bool
    #:arg-types
-   (list '* 3 int)))
+   (list '* "3" int)))
 
 (define igColorConvertU32ToFloat4
   (foreign-library-function

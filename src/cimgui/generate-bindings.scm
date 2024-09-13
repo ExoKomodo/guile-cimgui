@@ -2,25 +2,20 @@
              (ice-9 pretty-print)
              (ice-9 textual-ports)
              (json)
+             (srfi srfi-1)
              (system foreign))
 
-(define ImVec2 (* 2 float))
-(define ImVec4 (* 4 float))
-(define ImRect (* 2 ImVec2))
-(define bool unsigned-int)
-(define char uint8)
+(define ImVec2 (list 'float 'float))
+(define ImVec4 (list 'float 'float 'float 'float))
+(define ImRect (list 'ImVec2 'ImVec2))
+(define bool 'unsigned-int)
+(define char 'uint8)
 
 (define-syntax-rule (array-adjust arg-type type)
   (let ((match (string-match "[0-9]+" arg-type)))
     (if match
-        (* type (string->number (match:substring match)))
+        (match:substring match)
         'type)))
-
-                                        ; (define imgui/create-context
-                                        ;   (foreign-library-function cimgui
-                                        ;                             "igCreateContext"
-                                        ;                             #:return-type '*
-                                        ;                             #:arg-types (list '*)))
 
 (define (type->scm-type type)
   (if (eq? type '*)
@@ -98,14 +93,19 @@
              (string=? "va_list" arg-type)
              (string=? "..." arg-type)))))
 
+(define (flatten xs)
+  (cond ((null? xs) '())
+        ((pair? xs) (append (flatten (car xs)) (flatten (cdr xs))))
+        (else (list xs))))
+
 (define (generate-binding binding)
   (let ((binding-name (car binding))
         (binding-data (vector-ref (cdr binding) 0)))
     (let* ((args (assoc-ref binding-data "argsT"))
-           (return-type (assoc-ref binding-data "ret"))
-           (arg-types (map-in-order arg->type
+           (return-type (car (flatten (assoc-ref binding-data "ret"))))
+           (arg-types (flatten (map-in-order arg->type
                                     (filter arg-supported?
-                                            (vector->list args)))))
+                                            (vector->list args))))))
       `(("name" . ,binding-name)
         ("arg-types" . ,(list->vector arg-types))
         ("return-type" . ,(string->type return-type))))))
@@ -140,9 +140,9 @@
         (format output-file "~%")
         (for-each (lambda (type)
                     (pretty-print type output-file))
-                  `((define ImVec2 ,ImVec2)
-                    (define ImVec4 ,ImVec4)
-                    (define ImRect ,ImRect)
+                  `((define ImVec2 (list ,@ImVec2))
+                    (define ImVec4 (list ,@ImVec4))
+                    (define ImRect (list ,@ImRect))
                     (define bool ,bool)
                     (define char ,char)))
         (format output-file "~%")
@@ -152,3 +152,4 @@
                   generated)))))
 
 (call-with-input-file "cimgui.json" generate-bindings)
+
