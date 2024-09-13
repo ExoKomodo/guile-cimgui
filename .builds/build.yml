@@ -1,0 +1,50 @@
+image: alpine/latest
+packages:
+- docker
+- openrc
+- sudo
+secrets:
+# dockerhub access token
+- 024dec02-ae4c-468e-a764-1b0806498524
+environment:
+  REPO: guile-imgui
+  CRI: sudo docker
+  IMAGE_NAME: docker.io/exokomodo/guile-imgui
+  IMAGE_TAG: latest
+  USERNAME: exokomodo
+tasks:
+- docker-setup: |-
+    sudo rc-service cgroups start
+    if [[ ${CRI} == *'docker' ]]; then
+      sudo service docker start
+      sleep 1
+    fi
+    sleep 1
+- system-check: |-
+    ${CRI} --version
+    if [[ ${CRI} == *'docker' ]]; then
+      sudo service docker status
+    fi
+- test: |-
+    cd ${REPO}
+    make test
+- docker-login: |
+    cat ~/dockerhub-access-token | ${CRI} login docker.io \
+      --username ${USERNAME} \
+      --password-stdin
+- container-build: |-
+    cd ${REPO}
+    TIMESTAMP=$(date +%Y%m%d%H%M%S)
+    BRANCH=${GIT_REF#refs/heads/}
+    TIME_TAG=${BRANCH}-${TIMESTAMP}
+    CONTAINER_TAG=${TIME_TAG}
+    ADDITIONAL_CONTAINER_BUILD_ARGS=""
+    if [ "${GIT_REF}" = "refs/heads/main" ]; then
+      ADDITIONAL_CONTAINER_BUILD_ARGS="--tag ${USERNAME}/${REPO}:latest"
+    fi
+    sudo make container-build \
+      CONTAINER_TAG=${CONTAINER_TAG} \
+      ADDITIONAL_CONTAINER_BUILD_ARGS="${ADDITIONAL_CONTAINER_BUILD_ARGS}"
+- container-push: |-
+    cd ${REPO}
+    sudo make container-push-all
