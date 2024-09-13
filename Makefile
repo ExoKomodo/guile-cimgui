@@ -155,7 +155,9 @@ container-push-all: ## Pushes all container tags
 cimgui-generate:
 	cd ./src/external/cimgui/generator; \
 	./generator.sh; \
-	mv ./output/cimgui_impl.h ../../../include/cimgui.h;
+	mv -v ./output/cimgui_impl.h ../../../libs/cimgui.h; \
+	cd ..; \
+	mv -v ./cimgui.cpp ../../libs/cimgui.cpp;
 
 ##@ Help
 
