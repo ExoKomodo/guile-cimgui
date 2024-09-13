@@ -1,16 +1,16 @@
-# guile-imgui
+# guile-cimgui
 
 ## Important Links
 
-- [Source](https://git.sr.ht/~jamesaorson/guile-imgui)
+- [Source](https://git.sr.ht/~jamesaorson/guile-cimgui)
 - [Dear Imgui](https://github.com/ocornut/imgui)
 - [cimgui](https://github.com/cimgui/cimgui)
 
 ## Pipeline Status
 
-- Build [![Build status](https://builds.sr.ht/~jamesaorson/guile-imgui/commits/main/build.yml.svg)](https://builds.sr.ht/~jamesaorson/guile-imgui/commits/main/build.yml)
+- Build [![Build status](https://builds.sr.ht/~jamesaorson/guile-cimgui/commits/main/build.yml.svg)](https://builds.sr.ht/~jamesaorson/guile-cimgui/commits/main/build.yml)
 
-- Mirror [![Git mirror status](https://builds.sr.ht/~jamesaorson/guile-imgui/commits/main/mirror.yml.svg)](https://builds.sr.ht/~jamesaorson/guile-imgui/commits/main/mirror.yml)
+- Mirror [![Git mirror status](https://builds.sr.ht/~jamesaorson/guile-cimgui/commits/main/mirror.yml.svg)](https://builds.sr.ht/~jamesaorson/guile-cimgui/commits/main/mirror.yml)
 
 ## Setup
 

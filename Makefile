@@ -1,4 +1,4 @@
-PROJECT := guile-imgui
+PROJECT := guile-cimgui
 
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)
@@ -89,7 +89,7 @@ test: $(SOURCES) ## Tuns the test entrypoint of the project
 	guile \
 		-L $(SOURCE_DIR) \
 		-c \
-			'(begin (use-modules (guile-imgui)) (guile-imgui/test))' 
+			'(begin (use-modules (guile-cimgui)) (guile-cimgui/test))' 
 
 .PHONY: repl
 repl: repl-with-port ## Runs a REPL that can load the project
@@ -157,7 +157,7 @@ cimgui-generate:
 	guile \
 		-L $(SOURCE_DIR) \
 		-s generate-bindings.scm; \
-	mv -v ./guile-imgui.scm ..;
+	mv -v ./guile-cimgui.scm ..;
 
 ##@ Help
 

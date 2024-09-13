@@ -8,9 +8,9 @@ secrets:
 # dockerhub access token
 - 024dec02-ae4c-468e-a764-1b0806498524
 environment:
-  REPO: guile-imgui
+  REPO: guile-cimgui
   CRI: sudo docker
-  IMAGE_NAME: docker.io/exokomodo/guile-imgui
+  IMAGE_NAME: docker.io/exokomodo/guile-cimgui
   IMAGE_TAG: latest
   USERNAME: exokomodo
 tasks:

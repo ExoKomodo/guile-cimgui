@@ -1,7 +1,7 @@
 (define-module
- (guile-imgui)
+ (guile-cimgui)
  #:export
- (guile-imgui/test)
+ (guile-cimgui/test)
  #:use-module
  (system foreign)
  #:use-module
@@ -11,10 +11,10 @@
 
 (define cimgui (dynamic-link (or (getenv "CIMGUI_LIBRARY_PATH") "cimgui")))
 
-(define (guile-imgui/test)
-  (format #t "[guile-imgui] Testing guile-imgui...~%")
+(define (guile-cimgui/test)
+  (format #t "[guile-cimgui] Testing guile-cimgui...~%")
   (assert cimgui)
-  (format #t "[guile-imgui] Tests finished successfully~%"))
+  (format #t "[guile-cimgui] Tests finished successfully~%"))
 
 (define ImVec2 2)
 (define ImVec4 4)

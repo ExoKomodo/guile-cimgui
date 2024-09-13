@@ -2,9 +2,9 @@
 
 ## Render something
 
-### [Issue Link](https://git.sr.ht/~jamesaorson/guile-imgui)
+### [Issue Link](https://git.sr.ht/~jamesaorson/guile-cimgui)
 
-### Branch - [render-something](https://git.sr.ht/~jamesaorson/guile-imgui/tree/render-something)
+### Branch - [render-something](https://git.sr.ht/~jamesaorson/guile-cimgui/tree/render-something)
 
 ### Overview
 

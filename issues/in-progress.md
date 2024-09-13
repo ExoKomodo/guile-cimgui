@@ -4,7 +4,7 @@ Once completed, move the issue into [closed](./closed.md).
 
 ## Generate cimgui files 
 
-### Branch - [generate-cimgui](https://git.sr.ht/~jamesaorson/guile-imgui/tree/generate-cimgui)
+### Branch - [generate-cimgui](https://git.sr.ht/~jamesaorson/guile-cimgui/tree/generate-cimgui)
 
 ### Overview
 

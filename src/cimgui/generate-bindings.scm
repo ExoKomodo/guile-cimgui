@@ -116,11 +116,11 @@
          (call-with-output-file "cimgui.scm.json"
                                 (lambda (output-file)
                                         (scm->json `(("cimgui" . ,(list->vector generated))) output-file)))
-         (call-with-output-file "guile-imgui.scm"
+         (call-with-output-file "guile-cimgui.scm"
                                 (lambda (output-file)
                                         (pretty-print
-                                                '(define-module (guile-imgui)
-                                                    #:export (guile-imgui/test)
+                                                '(define-module (guile-cimgui)
+                                                    #:export (guile-cimgui/test)
                                                     #:use-module (system foreign)
                                                     #:use-module (system foreign-library)
                                                     #:use-module ((rnrs) #:select (assert)))
@@ -132,10 +132,10 @@
                                                         output-file)
                                         (format output-file "~%")
                                         (pretty-print
-                                         '(define (guile-imgui/test)
-                                                (format #t "[guile-imgui] Testing guile-imgui...~%")
+                                         '(define (guile-cimgui/test)
+                                                (format #t "[guile-cimgui] Testing guile-cimgui...~%")
                                                 (assert cimgui)
-                                                (format #t "[guile-imgui] Tests finished successfully~%"))
+                                                (format #t "[guile-cimgui] Tests finished successfully~%"))
                                                 output-file)
                                         (format output-file "~%")
                                         (for-each (lambda (type)

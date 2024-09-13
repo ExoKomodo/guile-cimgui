@@ -1,9 +1,9 @@
 image: alpine/latest
 sources:
-  - git@git.sr.ht:~jamesaorson/guile-imgui
+  - git@git.sr.ht:~jamesaorson/guile-cimgui
 environment:
-  REPO: guile-imgui
-  TARGET: git@github.com:exokomodo/guile-imgui
+  REPO: guile-cimgui
+  TARGET: git@github.com:exokomodo/guile-cimgui
 # https://builds.sr.ht/secrets
 secrets:
   # NOTE: github-ssh-key:
