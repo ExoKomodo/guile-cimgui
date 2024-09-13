@@ -149,6 +149,14 @@ container-push-all: ## Pushes all container tags
 		$(CONTAINER_NAME) \
 		$(ADDITIONAL_CONTAINER_PUSH_ARGS)
 
+##@ Utilities
+
+.PHONY: cimgui-generate
+cimgui-generate:
+	cd ./src/external/cimgui/generator; \
+	./generator.sh; \
+	mv ./output/cimgui_impl.h ../../../include/cimgui.h;
+
 ##@ Help
 
 .PHONY: help
