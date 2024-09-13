@@ -69,7 +69,7 @@
         void)
         (else
           (format #t "UNHANDLED TYPE: ~a~%" arg-type)
-          #f)))
+          'null)))
 
 (define (arg-supported? arg)
     (let ((arg-name (assoc-ref arg "name"))

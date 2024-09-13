@@ -156,7 +156,7 @@ cimgui-generate:
 	cd ./src/cimgui; \
 	guile \
 		-L $(SOURCE_DIR) \
-		-s generate.scm;
+		-s generate-bindings.scm;
 
 ##@ Help
 
