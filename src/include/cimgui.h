@@ -65,4 +65,3 @@ CIMGUI_API bool ImGui_ImplSDL2_ProcessEvent(const SDL_Event* event);
 CIMGUI_API void ImGui_ImplSDL2_SetGamepadMode(ImGui_ImplSDL2_GamepadMode mode,struct _SDL_GameController** manual_gamepads_array,int manual_gamepads_count);
 
 #endif
-
