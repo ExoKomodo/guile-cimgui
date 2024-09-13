@@ -1,5 +1,8 @@
 {
-    "source": "https://github.com/dearimgui/dear_bindings/actions/runs/10851550668",
+    "metadata": {
+        "SOURCE": "https://github.com/dearimgui/dear_bindings/actions/runs/10851550668",
+        "NOTE": "The actual prefix is different for the shared libraries we use."
+    },
     "defines": [
         {
             "name": "IMGUI_VERSION",
