@@ -36,13 +36,13 @@ else
 endif
 
 .PHONY: setup-arch
-setup-arch: setup-pacman setup-lb ## Sets up an Arch machine
+setup-arch: setup-pacman ## Sets up an Arch machine
 .PHONY: setup-debian
-setup-debian: setup-apt setup-lb ## Sets up a Debian-based machine
+setup-debian: setup-apt ## Sets up a Debian-based machine
 .PHONY: setup-fedora
-setup-fedora: setup-dnf setup-lb ## Sets up a Fedora machine
+setup-fedora: setup-dnf ## Sets up a Fedora machine
 .PHONY: setup-osx
-setup-osx: setup-brew setup-lb ## Sets up a Mac machine
+setup-osx: setup-brew ## Sets up a Mac machine
 
 .PHONY: setup-apt
 setup-apt: ## Install packages via APT
