@@ -14,7 +14,7 @@ tasks:
       cat <<EOF >> ~/.ssh/config
       Host github.com
         User git
-        IdentityFile ~/.ssh/efe38d9a-c55d-4fd1-85ad-1fa3e64ce68c
+        IdentityFile ~/.ssh/id_rsa
       EOF
   - ssh-keyscan: |-
       touch ~/.ssh/known_hosts
