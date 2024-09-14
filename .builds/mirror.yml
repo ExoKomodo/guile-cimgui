@@ -6,8 +6,8 @@ environment:
   TARGET: git@github.com:exokomodo/guile-cimgui
 # https://builds.sr.ht/secrets
 secrets:
-  # NOTE: github-ssh-key:
-  - 6d1be687-6726-4733-a69a-a6d75fe21d85
+  # github - exokomodo-bot ssh key
+  - efe38d9a-c55d-4fd1-85ad-1fa3e64ce68c
 tasks:
   - ssh-config: |-
       touch ~/.ssh/config
