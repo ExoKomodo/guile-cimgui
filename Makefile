@@ -155,7 +155,7 @@ container-run: ## Runs the container
 
 ##@ Utilities
 .PHONY: generate
-generate: cimgui-generate ## Generates all generated files
+generate: generate-cimgui ## Generates all generated files
 
 .PHONY: generate-cimgui
 generate-cimgui: ## Generates the cimgui Guile bindings

@@ -4,4 +4,5 @@
 
 (use-modules (guile-cimgui))
 
+(guile-cimgui/test)
 
