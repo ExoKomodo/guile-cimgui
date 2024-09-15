@@ -7,6 +7,7 @@ UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)
 
 CWD := $(shell pwd)
+LIB_DIR := $(CWD)/lib
 SOURCE_DIR := $(CWD)/src
 
 INIT_SOURCES := $(wildcard src/*.scm)
@@ -63,15 +64,16 @@ setup-pacman: ## Install packages via Pacman
 		guile;
 
 ifeq ($(UNAME_S), Linux)
-export CIMGUI_LIBRARY_PATH ?= $(SOURCE_DIR)/cimgui/linux-x64/cimgui.so
+export CIMGUI_LIBRARY_PATH ?= $(LIB_DIR)/cimgui/linux-x64/cimgui.so
 else ifeq ($(UNAME_S), Darwin)
-export CIMGUI_LIBRARY_PATH ?= $(SOURCE_DIR)/cimgui/osx/cimgui.dylib
+export CIMGUI_LIBRARY_PATH ?= $(LIB_DIR)/cimgui/osx/cimgui.dylib
 endif
 
 ##@ Run
 .PHONY: run
 run: env- $(INIT_SOURCES) $(SOURCES) ## Run the project. Assumes setup is complete.
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \
 		-s \
 			$(ENTRYPOINT)
@@ -81,6 +83,7 @@ REPL_PORT ?= 1689
 .PHONY: run-with-repl
 run-with-repl: $(INIT_SOURCES) $(SOURCES) ## Run the project with a REPL server exposed
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \
 		--listen=$(REPL_PORT) \
 		-s \
@@ -90,6 +93,7 @@ run-with-repl: $(INIT_SOURCES) $(SOURCES) ## Run the project with a REPL server 
 .PHONY: test
 test: $(SOURCES) ## Tuns the test entrypoint of the project
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \
 		-c \
 			'(begin (use-modules (guile-cimgui)) (guile-cimgui/test))' 
@@ -102,11 +106,13 @@ repl: repl-with-port ## Runs a REPL that can load the project
 .PHONY: repl-no-port
 repl-no-port: ## Runs a REPL that can load the project, without an open REPL port
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR)
 
 .PHONY: repl-with-port
 repl-with-port: ## Runs a REPL that can load the project, with an open REPL port
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \
 		--listen=$(REPL_PORT)
 
@@ -159,11 +165,12 @@ generate: generate-cimgui ## Generates all generated files
 
 .PHONY: generate-cimgui
 generate-cimgui: ## Generates the cimgui Guile bindings
-	cd ./src/cimgui; \
+	cd $(LIB_DIR)/cimgui; \
 	guile \
+		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \
 		-s generate-bindings.scm; \
-	mv -v ./guile-cimgui.scm ..;
+	mv -v ./guile-cimgui.scm $(SOURCE_DIR);
 
 ##@ Help
 .PHONY: help
