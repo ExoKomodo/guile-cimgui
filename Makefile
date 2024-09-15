@@ -63,9 +63,9 @@ setup-pacman: ## Install packages via Pacman
 		guile;
 
 ifeq ($(UNAME_S), Linux)
-CIMGUI_LIBRARY_PATH ?= $(SOURCES_DIR)/cimgui/linux-x64
+CIMGUI_LIBRARY_PATH ?= $(SOURCE_DIR)/cimgui/linux-x64/cimgui.so
 else ifeq ($(UNAME_S), Darwin)
-CIMGUI_LIBRARY_PATH ?= $(SOURCES_DIR)/cimgui/osx
+CIMGUI_LIBRARY_PATH ?= $(SOURCE_DIR)/cimgui/osx/cimgui.dylib
 endif
 
 ##@ Run
@@ -91,6 +91,7 @@ run-with-repl: $(INIT_SOURCES) $(SOURCES) ## Run the project with a REPL server 
 ##@ Test
 .PHONY: test
 test: $(SOURCES) ## Tuns the test entrypoint of the project
+	export CIMGUI_LIBRARY_PATH=$(CIMGUI_LIBRARY_PATH); \
 	guile \
 		-L $(SOURCE_DIR) \
 		-c \
