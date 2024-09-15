@@ -71,7 +71,7 @@ endif
 
 ##@ Run
 .PHONY: run
-run: env- $(INIT_SOURCES) $(SOURCES) ## Run the project. Assumes setup is complete.
+run: $(INIT_SOURCES) $(SOURCES) ## Run the project. Assumes setup is complete.
 	guile \
 		-L $(LIB_DIR) \
 		-L $(SOURCE_DIR) \

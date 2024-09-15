@@ -23,7 +23,7 @@
       type))
 
 (define (generate-function binding)
-  `(define ,(string->symbol (assoc-ref binding "name"))
+  `(define-public ,(string->symbol (assoc-ref binding "name"))
      (foreign-library-function cimgui
                                ,(assoc-ref binding "name")
                                #:return-type ,(type->scm-type (assoc-ref binding "return-type"))

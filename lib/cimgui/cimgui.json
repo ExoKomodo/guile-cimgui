@@ -29688,7 +29688,8 @@
         "ov_cimguiname": "igNewFrame",
         "ret": "void",
         "signature": "()",
-        "stname": ""
+        "stname": "",
+		"ready": true
       }
     ],
     "igNewLine": [
@@ -30942,7 +30943,8 @@
         "ov_cimguiname": "igRender",
         "ret": "void",
         "signature": "()",
-        "stname": ""
+        "stname": "",
+		"ready": true
       }
     ],
     "igRenderArrow": [
@@ -34557,7 +34559,8 @@
         "ov_cimguiname": "igShowDemoWindow",
         "ret": "void",
         "signature": "(bool*)",
-        "stname": ""
+        "stname": "",
+		"ready": true
       }
     ],
     "igShowFontAtlas": [
@@ -35523,7 +35526,8 @@
         "ov_cimguiname": "igStyleColorsDark",
         "ret": "void",
         "signature": "(ImGuiStyle*)",
-        "stname": ""
+        "stname": "",
+        "ready": true
       }
     ],
     "igStyleColorsLight": [

@@ -28,7 +28,52 @@
 (define bool unsigned-int)
 (define char uint8)
 
-(define igCreateContext
+(define-public igImplOpenGLNewFrame
+  (foreign-library-function
+	cimgui
+	"ImGui_ImplOpenGL3_NewFrame"
+	#:return-type
+	void
+	#:arg-types
+	'()))
+
+(define-public igStyleColorsDark
+  (foreign-library-function
+    cimgui
+    "igStyleColorsDark"
+    #:return-type
+    void
+    #:arg-types
+    (list '*)))
+
+(define-public igShowDemoWindow
+  (foreign-library-function
+    cimgui
+    "igShowDemoWindow"
+    #:return-type
+    void
+    #:arg-types
+    (list '*)))
+
+(define-public igRender
+  (foreign-library-function
+    cimgui
+    "igRender"
+    #:return-type
+    void
+    #:arg-types
+    (list)))
+
+(define-public igNewFrame
+  (foreign-library-function
+    cimgui
+    "igNewFrame"
+    #:return-type
+    void
+    #:arg-types
+    (list)))
+
+(define-public igCreateContext
   (foreign-library-function
     cimgui
     "igCreateContext"
