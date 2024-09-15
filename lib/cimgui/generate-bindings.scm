@@ -122,7 +122,6 @@
       (lambda (output-file)
         (pretty-print
          '(define-module (guile-cimgui)
-            #:export (guile-cimgui/test)
             #:use-module (system foreign)
             #:use-module (system foreign-library)
             #:use-module ((rnrs) #:select (assert)))
@@ -134,7 +133,7 @@
          output-file)
         (format output-file "~%")
         (pretty-print
-         '(define (guile-cimgui/test)
+         '(define-public (guile-cimgui/test)
             (format #t "[guile-cimgui] Testing guile-cimgui...~%")
             (assert cimgui)
             (format #t "[guile-cimgui] Tests finished successfully~%"))

@@ -1,7 +1,5 @@
 (define-module
   (guile-cimgui)
-  #:export
-  (guile-cimgui/test)
   #:use-module
   (system foreign)
   #:use-module
@@ -13,7 +11,7 @@
   (dynamic-link
     (or (getenv "CIMGUI_LIBRARY_PATH") "cimgui")))
 
-(define (guile-cimgui/test)
+(define-public (guile-cimgui/test)
   (format
     #t
     "[guile-cimgui] Testing guile-cimgui...~%")
@@ -27,15 +25,6 @@
 (define ImRect (list ImVec2 ImVec2))
 (define bool unsigned-int)
 (define char uint8)
-
-(define-public igImplOpenGLNewFrame
-  (foreign-library-function
-	cimgui
-	"ImGui_ImplOpenGL3_NewFrame"
-	#:return-type
-	void
-	#:arg-types
-	'()))
 
 (define-public igStyleColorsDark
   (foreign-library-function
