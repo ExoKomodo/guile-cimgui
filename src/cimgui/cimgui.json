@@ -16801,7 +16801,8 @@
         "ov_cimguiname": "igCreateContext",
         "ret": "ImGuiContext*",
         "signature": "(ImFontAtlas*)",
-        "stname": ""
+        "stname": "",
+        "ready": true
       }
     ],
     "igCreateNewWindowSettings": [

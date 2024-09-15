@@ -102,12 +102,14 @@
   (let ((binding-name (car binding))
         (binding-data (vector-ref (cdr binding) 0)))
     (let* ((args (assoc-ref binding-data "argsT"))
+           (ready-for-scm (assoc-ref binding-data "ready"))
            (return-type (car (flatten (assoc-ref binding-data "ret"))))
            (arg-types (flatten (map-in-order arg->type
                                     (filter arg-supported?
                                             (vector->list args))))))
       `(("name" . ,binding-name)
         ("arg-types" . ,(list->vector arg-types))
+        ("ready-for-scm" . ,ready-for-scm)
         ("return-type" . ,(string->type return-type))))))
 
 (define (generate-bindings bindings-file)
@@ -149,7 +151,8 @@
         (for-each (lambda (binding)
                     (pretty-print (generate-function binding) output-file)
                     (format output-file "~%"))
-                  generated)))))
+                  (filter (lambda (binding)
+                            (assoc-ref binding "ready-for-scm")) generated))))))
 
 (call-with-input-file "cimgui.json" generate-bindings)
 
